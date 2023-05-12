@@ -9,3 +9,4 @@ Rejestr napraw telefonów komórkowych
 + Strona z cennikiem napraw
 + Strona z formularzem do rejestracji nowej naprawy
 + Strona z ukończonymi naprawami
++ (Na stronie Admina) strona z naprawami do realizacji
