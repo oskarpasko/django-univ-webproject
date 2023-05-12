@@ -8,3 +8,4 @@ Rejestr napraw telefonów komórkowych
 + Strona główna
 + Strona z cennikiem napraw
 + Strona z formularzem do rejestracji nowej naprawy
++ Strona z ukończonymi naprawami
