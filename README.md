@@ -14,10 +14,10 @@ Rejestr napraw telefonów komórkowych
 ### Baza danych
 
 + client
-- client_login
-- client_fname
-- client_lname
+  - client_login
+  - client_fname
+  - client_lname
 + employee
-- employee_login
-- employee_fname
-- employee_lname
+  - employee_login
+  - employee_fname
+  - employee_lname
