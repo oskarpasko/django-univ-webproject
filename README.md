@@ -21,3 +21,4 @@ Rejestr napraw telefonów komórkowych
   - employee_login
   - employee_fname
   - employee_lname
++ record
