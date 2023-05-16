@@ -1,1 +1,44 @@
-<h1>Hello World</h1>
+<h1> Clients </h1>
+<table>
+{% for client in clients %}
+    <tr>
+        <td>{{client}}</td>
+    </tr>
+{% endfor %}
+</table>
+
+<h1>Employees</h1>
+<table>
+{% for employee in employees %}
+    <tr>
+        <td>{{employee}}</td>
+    </tr>
+{% endfor %}
+</table>
+
+<h1>Posts</h1>
+<table>
+{% for post in posts %}
+    <tr>
+        <td>{{post}}</td>
+    </tr>
+{% endfor %}
+</table>
+
+<h1>Services</h1>
+<table>
+{% for service in services %}
+    <tr>
+        <td>{{service}}</td>
+    </tr>
+{% endfor %}
+</table>
+
+<h1>Records</h1>
+<table>
+{% for record in records %}
+    <tr>
+        <td>{{record}}</td>
+    </tr>
+{% endfor %}
+</table>
