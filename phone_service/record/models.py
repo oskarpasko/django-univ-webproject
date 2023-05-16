@@ -17,7 +17,7 @@ class Post(models.Model):
     post_salary = models.FloatField(default=2000.00)
 
     def __str__(self):
-        return f'{self.post_name}, salary: {self.post_salary}'
+        return f'{self.post_name}, salary: {self.post_salary} PLN'
 
 class Employee(models.Model):
     employee_email = models.CharField(max_length=100, primary_key=True, blank=False)
