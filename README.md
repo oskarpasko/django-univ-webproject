@@ -14,9 +14,11 @@ Rejestr napraw telefonów komórkowych
 ### Baza danych
 
 + client
-  - client_login
-  - client_fname
-  - client_lname
+  - client_email, PK VC(60) NN UQ
+  - client_fname, VC(25) NN
+  - client_lname, VC(25) NN
+  - client_pass, VC(100) NN
+  - client_phone, CHAR(9) 
 + employee
   - employee_login
   - employee_fname
