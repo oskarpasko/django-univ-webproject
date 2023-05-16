@@ -15,12 +15,18 @@ Rejestr napraw telefonów komórkowych
 
 + client
   - client_email, PK VC(60) NN UQ
-  - client_fname, VC(25) NN
-  - client_lname, VC(25) NN
+  - client_fname, VC(50) NN
+  - client_lname, VC(50) NN
   - client_pass, VC(100) NN
   - client_phone, CHAR(9) 
 + employee
-  - employee_login
-  - employee_fname
-  - employee_lname
+  - employee_email, PK VC(60) NN UQ
+  - employee_fname, VC(50) NN
+  - employee_lname, VC(50) NN
+  - employee_phone, CHAR(9) NN UQ
+  - employee_post, FK NN
++ post
+  - post_name, PK VC(50) NN UQ
+  - post_salary, FLOAT NN
 + record
+
