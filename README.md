@@ -28,5 +28,13 @@ Rejestr napraw telefonów komórkowych
 + post
   - post_name, PK VC(50) NN UQ
   - post_salary, FLOAT NN
++ service 
+  - service_id, PK INT NN UQ
+  - service_name, VC(50) NN
+  - serivce_price, FLOAT NN
 + record
+  - record_id, PK INT NN UQ
+  - record_client, FK
+  - record_post, FK
+  - record_service, FK
 
