@@ -34,6 +34,8 @@ Rejestr napraw telefonów komórkowych
   - serivce_price, FLOAT NN
 + record
   - record_id, PK INT NN UQ
+  - record_start_date, DATE NN
+  - record_deadline, DATE
   - record_client, FK
   - record_post, FK
   - record_service, FK
