@@ -47,4 +47,3 @@ Rejestr napraw telefonów komórkowych
   - record_post, FK
   - record_service, FK
   - record_location, FK
-
