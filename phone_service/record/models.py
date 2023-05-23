@@ -3,58 +3,58 @@ from django.db import models
 # Create your models here.
 
 class Client(models.Model):
-    client_email = models.CharField(max_length=100, primary_key=True, blank=False)
-    client_fname = models.CharField(max_length=50, blank=False)
-    client_lname = models.CharField(max_length=50, blank=False)
-    client_pass = models.CharField(max_length=100, blank=False)
-    client_phone = models.CharField(max_length=9, blank=True, default='')
+    email = models.CharField(max_length=100, primary_key=True, blank=False, null=False)
+    fname = models.CharField(max_length=50, blank=False, null=False)
+    lname = models.CharField(max_length=50, blank=False, null=False)
+    password = models.CharField(max_length=100, blank=False, null=False)
+    phone = models.CharField(max_length=9, blank=True, null=True)
 
     def __str__(self):
-        return f'{self.client_fname} {self.client_lname}, email: {self.client_email}, phone: {self.client_phone}'
+        return f'{self.fname} {self.lname}, email: {self.email}, phone: {self.phone}'
 
-class Post(models.Model):
-    post_name = models.CharField(max_length=50, primary_key=True, blank=False, unique=True)
-    post_salary = models.FloatField(default=2000.00)
+class Posn(models.Model):
+    name = models.CharField(max_length=50, primary_key=True, blank=False, unique=True)
+    salary = models.DecimalField(max_digits=7, decimal_places=2)
 
     def __str__(self):
-        return f'{self.post_name}, salary: {self.post_salary} PLN'
+        return f'{self.name}, salary: {self.salary} PLN'
     
 class Location(models.Model):
-    location_id = models.AutoField(primary_key=True, unique=True, blank=False)
-    location_street = models.CharField(max_length=255, blank=False)
-    location_number = models.CharField(max_length=5, blank=False)
-    location_postcode = models.CharField(max_length=6, blank=False)
-    location_phone = models.CharField(max_length=9, blank=False, unique=True)
+    id = models.AutoField(primary_key=True, unique=True, blank=False, null=False)
+    street = models.CharField(max_length=255, blank=False, null=False)
+    number = models.CharField(max_length=5, blank=False, null=False)
+    postcode = models.CharField(max_length=6, blank=False, null=False)
+    phone = models.CharField(max_length=9, blank=False, null=False, unique=True)
 
     def __str__(self):
-        return f'{self.location_street}, {self.location_number}, {self.location_postcode}, phone: {self.location_phone}'
+        return f'{self.street}, {self.number}, {self.postcode}, phone: {self.phone}'
 
 class Employee(models.Model):
-    employee_email = models.CharField(max_length=100, primary_key=True, blank=False)
-    employee_fname = models.CharField(max_length=50, blank=False)
-    employee_lname = models.CharField(max_length=50, blank=False)
-    employee_phone = models.CharField(max_length=9, blank=False)
-    employee_post = models.ForeignKey(Post, on_delete=models.CASCADE, blank=False)
-    employee_location = models.ForeignKey(Location, on_delete=models.CASCADE, blank=False, default=1)
+    email = models.CharField(max_length=100, primary_key=True, blank=False, null=False)
+    fname = models.CharField(max_length=50, blank=False, null=False)
+    lname = models.CharField(max_length=50, blank=False, null=False)
+    phone = models.CharField(max_length=9, blank=False, null=False)
+    posn = models.ForeignKey(Posn, on_delete=models.CASCADE, blank=False, null=False)
+    location = models.ForeignKey(Location, on_delete=models.CASCADE, blank=False, null=False, default=1)
 
     def __str__(self):
-        return f'{self.employee_fname} {self.employee_lname}, email: {self.employee_email}, phone: {self.employee_phone} | post: {self.employee_post} | {self.employee_location}'
+        return f'{self.fname} {self.lname}, email: {self.email}, phone: {self.phone} | post: {self.posn} | {self.location}'
 
 class Service(models.Model):
-    service_id = models.IntegerField(primary_key=True, unique=True, blank=False)
-    service_name = models.CharField(max_length=50, blank=False)
-    service_price = models.FloatField(default=20.00)
+    id = models.IntegerField(primary_key=True, unique=True, blank=False, null=False)
+    name = models.CharField(max_length=50, blank=False, null=False)
+    price = models.DecimalField(max_digits=7, decimal_places=2)
 
     def __str__(self):
-        return f'{self.service_name}, price: {self.service_price} PLN'
+        return f'{self.name}, price: {self.price} PLN'
 
 class Record(models.Model):
-    record_id = models.AutoField(primary_key=True, unique=True, blank=False)
-    record_start_date = models.DateField(blank=False)
-    record_deadline = models.DateField(null=True, blank=True, default='')
-    record_client = models.ForeignKey(Client, on_delete=models.CASCADE)
-    record_service = models.ForeignKey(Service, on_delete=models.CASCADE)
-    record_location = models.ForeignKey(Location, on_delete=models.CASCADE, default=1)
+    id = models.AutoField(primary_key=True, unique=True, blank=False, null=False)
+    start_date = models.DateField(blank=False, null=False)
+    deadline = models.DateField(blank=True, null=True, default='')
+    client = models.ForeignKey(Client, on_delete=models.CASCADE)
+    service = models.ForeignKey(Service, on_delete=models.CASCADE)
+    location = models.ForeignKey(Location, on_delete=models.CASCADE, default=1)
 
     def __str__(self):
-        return f'start date: {self.record_start_date}, deadline: {self.record_deadline} | {self.record_client} | {self.record_service} | {self.record_location}'
+        return f'start date: {self.start_date}, deadline: {self.deadline} | {self.client} | {self.service} | {self.location}'
