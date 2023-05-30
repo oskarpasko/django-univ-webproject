@@ -11,12 +11,15 @@ from .managers import CustomUserManager
 
 class Client(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(_("email address"), primary_key=True, unique=True)
+    fname = models.CharField(max_length=50, default="")
+    lname = models.CharField(max_length=50, default="")
+    phone = models.CharField(max_length=9, blank=True, null=True, default="")
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     date_joined = models.DateTimeField(default=timezone.now)
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ["fname", "lname", "phone"]
 
     objects = CustomUserManager()
 
