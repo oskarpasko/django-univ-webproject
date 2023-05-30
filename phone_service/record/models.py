@@ -1,20 +1,32 @@
 from django.db import models
+from django.conf import settings
+from django.db import models
+from django.utils.translation import gettext_lazy as _
+from django.utils import timezone
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
+
+from .managers import CustomUserManager
 
 # Create your models here.
 
-class Client(models.Model):
-    email = models.CharField(max_length=100, primary_key=True, blank=False, null=False)
-    fname = models.CharField(max_length=50, blank=False, null=False)
-    lname = models.CharField(max_length=50, blank=False, null=False)
-    password = models.CharField(max_length=100, blank=False, null=False)
-    phone = models.CharField(max_length=9, blank=True, null=True)
+class Client(AbstractBaseUser, PermissionsMixin):
+    email = models.EmailField(_("email address"), primary_key=True, unique=True)
+    is_staff = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
+    date_joined = models.DateTimeField(default=timezone.now)
+
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = []
+
+    objects = CustomUserManager()
 
     def __str__(self):
-        return f'{self.fname} {self.lname}, email: {self.email}, phone: {self.phone}'
+        return self.email
+
 
 class Posn(models.Model):
-    name = models.CharField(max_length=50, primary_key=True, blank=False, unique=True)
-    salary = models.DecimalField(max_digits=7, decimal_places=2)
+    name = models.CharField(max_length=50, primary_key=True, blank=False, null=False, unique=True)
+    salary = models.DecimalField(max_digits=7, decimal_places=2, blank=False, null=False)
 
     def __str__(self):
         return f'{self.name}, salary: {self.salary} PLN'
@@ -51,10 +63,11 @@ class Service(models.Model):
 class Record(models.Model):
     id = models.AutoField(primary_key=True, unique=True, blank=False, null=False)
     start_date = models.DateField(blank=False, null=False)
-    deadline = models.DateField(blank=True, null=True, default='')
-    client = models.ForeignKey(Client, on_delete=models.CASCADE)
-    service = models.ForeignKey(Service, on_delete=models.CASCADE)
-    location = models.ForeignKey(Location, on_delete=models.CASCADE, default=1)
+    deadline = models.DateField(blank=True, null=True, default=None)
+    price = models.DecimalField(max_digits=7, decimal_places=2, blank=False, null=False)
+    client = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default='')
+    service = models.ForeignKey(Service, on_delete=models.CASCADE, blank=False, null=False)
+    location = models.ForeignKey(Location, on_delete=models.CASCADE, blank=False, null=False)
 
     def __str__(self):
         return f'start date: {self.start_date}, deadline: {self.deadline} | {self.client} | {self.service} | {self.location}'
