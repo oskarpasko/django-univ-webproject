@@ -11,15 +11,15 @@ from .managers import CustomUserManager
 
 class Client(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(_("email address"), primary_key=True, unique=True)
-    fname = models.CharField(max_length=50, default="")
-    lname = models.CharField(max_length=50, default="")
+    first_name = models.CharField(max_length=50, default="")
+    last_name = models.CharField(max_length=50, default="")
     phone = models.CharField(max_length=9, blank=True, null=True, default="")
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     date_joined = models.DateTimeField(default=timezone.now)
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ["fname", "lname", "phone"]
+    REQUIRED_FIELDS = ["first_name", "last_name", "phone"]
 
     objects = CustomUserManager()
 
@@ -46,14 +46,14 @@ class Location(models.Model):
 
 class Employee(models.Model):
     email = models.CharField(max_length=100, primary_key=True, blank=False, null=False)
-    fname = models.CharField(max_length=50, blank=False, null=False)
-    lname = models.CharField(max_length=50, blank=False, null=False)
+    first_name = models.CharField(max_length=50, blank=False, null=False)
+    last_name = models.CharField(max_length=50, blank=False, null=False)
     phone = models.CharField(max_length=9, blank=False, null=False)
-    posn = models.ForeignKey(Posn, on_delete=models.CASCADE, blank=False, null=False)
-    location = models.ForeignKey(Location, on_delete=models.CASCADE, blank=False, null=False, default=1)
+    posn = models.ForeignKey(Posn, on_delete=models.PROTECT, blank=False, null=False)
+    location = models.ForeignKey(Location, on_delete=models.PROTECT, blank=False, null=False, default=1)
 
     def __str__(self):
-        return f'{self.fname} {self.lname}, email: {self.email}, phone: {self.phone} | post: {self.posn} | {self.location}'
+        return f'{self.first_name} {self.last_name}, email: {self.email}, phone: {self.phone} | post: {self.posn} | {self.location}'
 
 class Service(models.Model):
     id = models.IntegerField(primary_key=True, unique=True, blank=False, null=False)
@@ -68,9 +68,9 @@ class Record(models.Model):
     start_date = models.DateField(blank=False, null=False)
     deadline = models.DateField(blank=True, null=True, default=None)
     price = models.DecimalField(max_digits=7, decimal_places=2, blank=False, null=False)
-    client = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default='')
-    service = models.ForeignKey(Service, on_delete=models.CASCADE, blank=False, null=False)
-    location = models.ForeignKey(Location, on_delete=models.CASCADE, blank=False, null=False)
+    client = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, default='')
+    service = models.ForeignKey(Service, on_delete=models.PROTECT, blank=False, null=False)
+    location = models.ForeignKey(Location, on_delete=models.PROTECT, blank=False, null=False)
 
     def __str__(self):
         return f'start date: {self.start_date}, deadline: {self.deadline} | {self.client} | {self.service} | {self.location}'
