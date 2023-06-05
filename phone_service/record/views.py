@@ -1,5 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import *
+from .forms import LoginForm
+from django.contrib import messages
+from django.contrib.auth import login, authenticate
 
 # Create your views here.
 
@@ -19,3 +22,25 @@ def index(request):
             'locations':locations
             }
     return render(request, "record/index.html", context)
+
+def sign_in(request):
+
+    if request.method == 'GET':
+        form = LoginForm()
+        return render(request,'record/login.html', {'form': form})
+    
+    elif request.method == 'POST':
+        form = LoginForm(request.POST)
+        
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            password = form.cleaned_data['password']
+            user = authenticate(request,email=email,password=password)
+            if user:
+                login(request, user)
+                messages.success(request,f'Hi {email}, welcome back!')
+                return redirect('index')
+        
+        # form is not valid or user is not authenticated
+        messages.error(request,f'Invalid username or password')
+        return render(request,'record/login.html',{'form': form})
