@@ -36,6 +36,7 @@ class Posn(models.Model):
     
 class Location(models.Model):
     id = models.AutoField(primary_key=True, unique=True, blank=False, null=False)
+    city = models.CharField(max_length=255, blank=False, null=False, default="Rzeszów")
     street = models.CharField(max_length=255, blank=False, null=False)
     number = models.CharField(max_length=5, blank=False, null=False)
     postcode = models.CharField(max_length=6, blank=False, null=False)
@@ -56,7 +57,7 @@ class Employee(models.Model):
         return f'{self.first_name} {self.last_name}, email: {self.email}, phone: {self.phone} | post: {self.posn} | {self.location}'
 
 class Service(models.Model):
-    id = models.IntegerField(primary_key=True, unique=True, blank=False, null=False)
+    id = models.AutoField(primary_key=True, unique=True, blank=False, null=False)
     name = models.CharField(max_length=50, blank=False, null=False)
     price = models.DecimalField(max_digits=7, decimal_places=2)
 
