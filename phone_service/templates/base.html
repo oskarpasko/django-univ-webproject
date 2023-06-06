@@ -4,15 +4,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="{% static 'bootstrap.css' %}" />
     <script src="{% static 'js/app.js' %}" defer></script>
-    <title>{% block page_title %}{% endblock  %}</title>
-	<link rel="stylesheet" href="{% static 'bootstrap.css' %}" />
-	{% block css_files %}{% endblock css_files %}
+
+	{% block css_styles %}{% endblock css_styles %}
+
+    <title>{% block title%}{% endblock title %} </title>
   </head>
   <body>
-  	<header>
-  			<a href="{% url 'login' %}">Login</a>
-  	</header>
   	<main>
 	  	{% if messages %}
 			<div class="messages">
