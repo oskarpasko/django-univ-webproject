@@ -5,12 +5,14 @@ from .forms import CustomUserCreationForm, CustomUserChangeForm
 
 # Register your models here.
 
+
+
 class CustomUserAdmin(UserAdmin):
     add_form = CustomUserCreationForm
     form = CustomUserChangeForm
     model = Client
-    list_display = ("email", "first_name", "last_name", "phone", "is_staff", "is_active",)
-    list_filter = ("email", "first_name", "last_name", "phone", "is_staff", "is_active",)
+    list_display = ("email", "first_name", "last_name", "phone",)
+    list_filter = ("email", "phone", "is_staff", "is_active",)
     fieldsets = (
         (None, {"fields": ("email", "password", "first_name", "last_name", "phone")}),
         ("Permissions", {"fields": ("is_staff", "is_active", "groups", "user_permissions")}),
@@ -24,8 +26,9 @@ class CustomUserAdmin(UserAdmin):
             )}
         ),
     )
-    search_fields = ("email",)
+    search_fields = ("email", "phone")
     ordering = ("email",)
+
 
 admin.site.register(Client, CustomUserAdmin)
 admin.site.register(Employee)
