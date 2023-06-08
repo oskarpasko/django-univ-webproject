@@ -41,10 +41,42 @@ class EmployeeAdmin(admin.ModelAdmin):
     get_posn.admin_order_field  = 'posn'
     get_posn.short_description = 'position' 
 
+class LocationAdmin(admin.ModelAdmin):
+    list_filter = ["city"]
+    list_display = ["city", "street", "number", "postcode", "phone"]
+    search_fields = ["city", "street", "number", "postcode", "phone"]
+    ordering = ["city", "street", "number"]
+
+class PosnAdmin(admin.ModelAdmin):
+    list_display = ["name", "salary"]
+    search_fields = ["name", "salary"]
+    ordering = ["-salary", "name"]    
+
+class RecordAdmin(admin.ModelAdmin):
+    model = Record
+    list_filter = ["price","start_date", "deadline"]
+    list_display = ["client", "get_service", "price", "start_date", "deadline", "get_location"]
+    search_fields = ["client", "get_service", "price", "start_date", "deadline", "location__city"]
+    ordering = []
+    date_hierarchy = 'deadline'
+
+    def get_service(self, obj):
+        return obj.service.name
+    get_service.admin_order_field  = 'service'
+    get_service.short_description = 'service' 
+    def get_location(self, obj):
+        return f'{obj.location.city}, {obj.location.street} {obj.location.number}'
+    get_service.admin_order_field = 'location'
+    get_service.short_description = 'location'
+
+class ServiceAdmin(admin.ModelAdmin):
+    list_display = ["name", "price"]
+    search_fields = ["name", "price"]
+    ordering = ["-price", "name"]
 
 admin.site.register(Client, CustomUserAdmin)
 admin.site.register(Employee, EmployeeAdmin)
-admin.site.register(Posn)
-admin.site.register(Service)
-admin.site.register(Record)
-admin.site.register(Location)
+admin.site.register(Posn, PosnAdmin)
+admin.site.register(Service, ServiceAdmin)
+admin.site.register(Record, RecordAdmin)
+admin.site.register(Location, LocationAdmin)
