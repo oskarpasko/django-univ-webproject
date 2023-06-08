@@ -5,12 +5,14 @@ from .forms import CustomUserCreationForm, CustomUserChangeForm
 
 # Register your models here.
 
+
+
 class CustomUserAdmin(UserAdmin):
     add_form = CustomUserCreationForm
     form = CustomUserChangeForm
     model = Client
-    list_display = ("email", "first_name", "last_name", "phone", "is_staff", "is_active",)
-    list_filter = ("email", "first_name", "last_name", "phone", "is_staff", "is_active",)
+    list_display = ("email", "first_name", "last_name", "phone",)
+    list_filter = ("is_staff", "is_active",)
     fieldsets = (
         (None, {"fields": ("email", "password", "first_name", "last_name", "phone")}),
         ("Permissions", {"fields": ("is_staff", "is_active", "groups", "user_permissions")}),
@@ -24,12 +26,57 @@ class CustomUserAdmin(UserAdmin):
             )}
         ),
     )
-    search_fields = ("email",)
+    search_fields = ("email", "phone")
     ordering = ("email",)
 
+class EmployeeAdmin(admin.ModelAdmin):
+    model = Employee
+    list_filter = ["email", "phone", "posn__name"]
+    list_display = ["email", "first_name", "last_name", "phone", "get_posn"]
+    search_fields = ["email", "phone", "last_name", "first_name"]
+    ordering = ["email",]
+
+    def get_posn(self, obj):
+        return obj.posn.name
+    get_posn.admin_order_field  = 'posn'
+    get_posn.short_description = 'position' 
+
+class LocationAdmin(admin.ModelAdmin):
+    list_filter = ["city"]
+    list_display = ["city", "street", "number", "postcode", "phone"]
+    search_fields = ["city", "street", "number", "postcode", "phone"]
+    ordering = ["city", "street", "number"]
+
+class PosnAdmin(admin.ModelAdmin):
+    list_display = ["name", "salary"]
+    search_fields = ["name", "salary"]
+    ordering = ["-salary", "name"]    
+
+class RecordAdmin(admin.ModelAdmin):
+    model = Record
+    list_filter = ["price","start_date", "deadline"]
+    list_display = ["client", "get_service", "price", "start_date", "deadline", "get_location"]
+    search_fields = ["client", "get_service", "price", "start_date", "deadline", "location__city"]
+    ordering = []
+    date_hierarchy = 'deadline'
+
+    def get_service(self, obj):
+        return obj.service.name
+    get_service.admin_order_field  = 'service'
+    get_service.short_description = 'service' 
+    def get_location(self, obj):
+        return f'{obj.location.city}, {obj.location.street} {obj.location.number}'
+    get_service.admin_order_field = 'location'
+    get_service.short_description = 'location'
+
+class ServiceAdmin(admin.ModelAdmin):
+    list_display = ["name", "price"]
+    search_fields = ["name", "price"]
+    ordering = ["-price", "name"]
+
 admin.site.register(Client, CustomUserAdmin)
-admin.site.register(Employee)
-admin.site.register(Posn)
-admin.site.register(Service)
-admin.site.register(Record)
-admin.site.register(Location)
+admin.site.register(Employee, EmployeeAdmin)
+admin.site.register(Posn, PosnAdmin)
+admin.site.register(Service, ServiceAdmin)
+admin.site.register(Record, RecordAdmin)
+admin.site.register(Location, LocationAdmin)
