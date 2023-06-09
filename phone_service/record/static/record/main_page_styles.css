@@ -3,12 +3,12 @@
 }
 
 .site-header {
-  background-color: rgba(0, 0, 0, .85);
+  background-color: rgb(65, 118, 144);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   backdrop-filter: saturate(180%) blur(20px);
 }
 .site-header a {
-  color: #999;
+  color: #404040;
   transition: ease-in-out color .15s;
 }
 .site-header a:hover {
@@ -16,6 +16,9 @@
   text-decoration: none;
 }
 
+.featurette-heading {
+  color: rgb(65, 118, 144);
+}
 .product-device {
   position: absolute;
   right: 10%;
@@ -35,7 +38,7 @@
   bottom: 10%;
   left: 10px;
   content: "";
-  background-color: rgba(255, 255, 255, .1);
+  background-color: rgba(65, 118, 144, .1);
   border-radius: 5px;
 }
 
@@ -46,7 +49,9 @@
   left: 5%;
   background-color: #e5e5e5;
 }
-
+.btn:hover {
+background-color: rgba(65, 118, 144);
+}
 .border-top { border-top: 1px solid #e5e5e5; }
 .border-bottom { border-bottom: 1px solid #e5e5e5; }
 
@@ -57,7 +62,7 @@
   -webkit-box-flex: 1;
   flex: 1;
 }
-@media (min-width: 768px) {
+@media (min-width: 1020px) {
   .flex-md-equal > * {
     -ms-flex: 1;
     -webkit-box-flex: 1;
