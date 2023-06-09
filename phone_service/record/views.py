@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .models import *
 from .forms import LoginForm
 from django.contrib import messages
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 
 # Create your views here.
 
@@ -44,3 +44,8 @@ def sign_in(request):
         # form is not valid or user is not authenticated
         messages.error(request,f'Invalid username or password')
         return render(request,'record/login.html',{'form': form})
+    
+def sign_out(request):
+    logout(request)
+    messages.info(request, "You have successfully logged out.") 
+    return redirect('index')
