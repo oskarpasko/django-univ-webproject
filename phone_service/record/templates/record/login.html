@@ -12,7 +12,9 @@
 {% block content %}
 <form method="POST" novalidate>
 	{% csrf_token %}
-	<container class="hv-100 wv-100 text-center align-items-center">
+
+	
+	<container class="d-flex justify-content-center align-items-center" style="height:100vh;">
 	<section class=" text-center text-lg-start w-50 row">
 		<div class="card mb-3 align-self-center">
 		  <div class="row g-0 d-flex align-items-center">
@@ -46,7 +48,7 @@
 		  </div>
 		</div>
 	  </section>
-	</container>
+	</container> 
 </form>
 
 {% endblock content%}
