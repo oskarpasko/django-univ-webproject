@@ -1,3 +1,17 @@
+{% extends 'base.html' %}
+
+{%load static %}
+
+{% block css_styles %}
+<link rel="stylesheet" href="{% static 'record/main_page_styles.css' %}">
+{% endblock css_styles %}
+
+{% block title %}Main Page{% endblock title %}
+
+{% block content %}
+
+{% include 'record/includes/header.html' %}
+
 <h1> Clients </h1>
 <table>
 {% for client in clients %}
@@ -52,3 +66,4 @@
 {% endfor %}
 </table>
 
+{% endblock content%}
