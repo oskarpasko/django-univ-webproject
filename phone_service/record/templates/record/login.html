@@ -3,7 +3,8 @@
 {%load static %}
 
 {% block css_styles %}
-<link rel="stylesheet" href="{% static 'record/login_styles.css' %}">
+<link rel="stylesheet" href="{% static 'record\login_styles.css' %}">
+
 {% endblock css_styles %}
 
 {% block title %}Login Page{% endblock title %}
@@ -11,9 +12,9 @@
 {% block content %}
 <form method="POST" novalidate>
 	{% csrf_token %}
-	<section class=" text-center text-lg-start">
-		</style>
-		<div class="card mb-3">
+	<container class="hv-100 wv-100 text-center align-items-center">
+	<section class=" text-center text-lg-start w-50 row">
+		<div class="card mb-3 align-self-center">
 		  <div class="row g-0 d-flex align-items-center">
 			<div class="col-lg-4 d-none d-lg-flex">
 			  <img src="https://mdbootstrap.com/img/new/ecommerce/vertical/004.jpg" alt="Trendy Pants and Shoes"
@@ -45,6 +46,7 @@
 		  </div>
 		</div>
 	  </section>
+	</container>
 </form>
 
 {% endblock content%}
