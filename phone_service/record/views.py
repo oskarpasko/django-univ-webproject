@@ -26,6 +26,9 @@ def index(request):
 def sign_in(request):
 
     if request.method == 'GET':
+        if request.user.is_authenticated:
+            return redirect('index')
+        
         form = LoginForm()
         return render(request,'record/login.html', {'form': form})
     
