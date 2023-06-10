@@ -8,3 +8,10 @@ Rejestr napraw telefonów komórkowych (do 28 czerwca)
 + test@test.com / TrudneHaslo
 + jkowalski@cos.com / SlabeHaslo
 + aowak@cos.com / WlasneHaslo
+
+## TODO
++ rejestracja
++ cennik
++ formularz nowej naprawy
++ strona klienta
++ update klienta
