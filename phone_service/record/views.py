@@ -54,4 +54,5 @@ def sign_out(request):
     return redirect('index')
 
 def pricing(request):
-    return render(request, 'record/pricing.html')
+    services = Service.objects.all()
+    return render(request, 'record/pricing.html', {'services': services})
