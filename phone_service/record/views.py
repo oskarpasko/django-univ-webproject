@@ -52,3 +52,6 @@ def sign_out(request):
     logout(request)
     messages.info(request, "You have successfully logged out.") 
     return redirect('index')
+
+def pricing(request):
+    return render(request, 'record/pricing.html')
