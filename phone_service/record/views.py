@@ -5,6 +5,8 @@ from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 
 # Create your views here.
+def register(request):
+    return render(request, 'record/register.html')
 
 def index(request):
     clients = Client.objects.all()
@@ -56,3 +58,4 @@ def sign_out(request):
 def pricing(request):
     services = Service.objects.all()
     return render(request, 'record/pricing.html', {'services': services})
+
