@@ -59,3 +59,6 @@ def pricing(request):
     services = Service.objects.all()
     return render(request, 'record/pricing.html', {'services': services})
 
+def user(request):
+    return render(request, 'record/user.html')
+
