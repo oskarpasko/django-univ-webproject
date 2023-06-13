@@ -7,12 +7,14 @@
       <a class="py-2 d-none d-md-inline-block text-decoration-none" href="#">Product</a>
       <a class="py-2 d-none d-md-inline-block text-decoration-none" href="#">Features</a>
       <a class="py-2 d-none d-md-inline-block text-decoration-none" href="#">Enterprise</a>
-      <a class="py-2 d-none d-md-inline-block text-decoration-none" href="#">Support</a>
       <a class="py-2 d-none d-md-inline-block text-decoration-none" href="{% url 'pricing' %}">Pricing</a>
       {% if user.is_authenticated %}
-      <a class="py-2 d-none d-md-inline-block text-decoration-none" href="{% url 'logout' %}">Logout</a>
+        <a class="py-2 d-none d-md-inline-block text-decoration-none" href="#">Account</a>
+      {% endif %}
+      {% if user.is_authenticated %}
+        <a class="py-2 d-none d-md-inline-block text-decoration-none" href="{% url 'logout' %}">Logout</a>
       {% else %}
-      <a class="py-2 d-none d-md-inline-block text-decoration-none" href="{% url 'login' %}">Login</a>
+        <a class="py-2 d-none d-md-inline-block text-decoration-none" href="{% url 'login' %}">Login</a>
       {% endif %}
     </div>
  </nav>
