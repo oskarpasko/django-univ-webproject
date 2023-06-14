@@ -38,7 +38,7 @@ class Posn(models.Model):
         verbose_name_plural = "Position"
 
     def __str__(self):
-        return f'{self.name}, salary: {self.salary} PLN'
+        return f'{self.name}, salary: {self.salary} Euro'
     
 class Location(models.Model):
     id = models.AutoField(primary_key=True, unique=True, blank=False, null=False)
