@@ -20,11 +20,13 @@
                     <div class="osahan-user text-center">
                         <div class="osahan-user-media">
                             <div class="osahan-user-media-body">
-                                <h6 class="mb-2">Imie Nazwisko</h6>
-                                <p class="mb-1">telefon</p>
-                                <p>email</p>
+                                <h6 class="mb-2">{{ client.first_name }} {{ client.last_name }}</h6>
+                                <p class="mb-1">{{ client.phone }}</p>
+                                <p>{{client.email}}</p>
                                 <p class="mb-0 text-black font-weight-bold"><a class="text-primary mr-3" data-toggle="modal" data-target="#edit-profile-modal" href="#"><i class="icofont-ui-edit"></i> Edit Profile</a></p>
+                                {% if client.is_superuser %}
                                 <p class="mb-0 text-black font-weight-bold"><a class="text-primary mr-3" data-toggle="modal" data-target="#edit-profile-modal" href="#"><i class="icofont-ui-edit"></i> Admin Panel</a></p>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
@@ -36,31 +38,35 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane  fade  active show" id="orders" role="tabpanel" aria-labelledby="orders-tab">
                         <h4 class="font-weight-bold mt-0 mb-4">Past Orders</h4>
-                        <div class="bg-white card mb-4 order-list shadow-sm">
-                            <div class="gold-members p-4">
-                                <a href="#">
-                                </a>
-                                <div class="media">
-                                    <a href="#">
-                                    </a>
-                                    <div class="media-body">
-                                        <a href="#">
-                                            <span class="float-right text-info">Nazwa uslugi<i class="icofont-check-circled text-success"></i></span>
-                                        </a>
-                                        <p class="text-gray mb-1"><i class="icofont-location-arrow"></i>Miejsce wykonania uslugi</p>
-                                        <p class="text-gray mb-3"><i class="icofont-list"></i> ID zamowienia <i class="icofont-clock-time ml-2"></i> Deadline</p>
-                                        <p class="text-dark">Daty od kiedy do kiedy</p>
-                                        <hr>
-                                        <div class="float-right">
-                                            <a class="btn btn-sm btn-primary" href="#"><i class="icofont-refresh"></i> DETAILS</a>
+                        
+                                {% for record in records %}
+                                    <div class="bg-white card mb-4 order-list shadow-sm">
+                                        <div class="gold-members p-4">
+                                            <a href="#">
+                                            </a>
+                                        <div class="media">
+                                            <a href="#">
+                                            </a>
+                                            <div class="media-body">
+                                                <a href="#">
+                                                    <span class="float-right text-info">{{ record.service.name }}<i class="icofont-check-circled text-success"></i></span>
+                                                </a>
+                                                <p class="text-gray mb-1"><i class="icofont-location-arrow"></i>{{ record.location}}</p>
+                                                <p class="text-gray mb-3"><i class="icofont-list"></i> {{ record.id }} <i class="icofont-clock-time ml-2"></i></p>
+                                                <p class="text-dark">{{ record.start_date }} - {{ record.deadline }}</p>
+                                                <hr>
+                                                <div class="float-right">
+                                                    <a class="btn btn-sm btn-primary" href="#"><i class="icofont-refresh"></i> DETAILS</a>
+                                                </div>
+                                                <p class="mb-0 text-black text-primary pt-2"><span class="text-black font-weight-bold"> Total Paid:</span> {{ record.price }}
+                                                </p>
+                                            </div>
                                         </div>
-                                        <p class="mb-0 text-black text-primary pt-2"><span class="text-black font-weight-bold"> Total Paid:</span> Kwota
-                                        </p>
+                                        </div>
                                     </div>
-                                </div>
+                                {% endfor %}
 
-                            </div>
-                        </div>
+                            
                     </div>
                 </div>
             </div>
