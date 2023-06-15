@@ -38,11 +38,11 @@ class Posn(models.Model):
         verbose_name_plural = "Position"
 
     def __str__(self):
-        return f'{self.name}, salary: {self.salary} PLN'
+        return f'{self.name}, salary: {self.salary} Euro'
     
 class Location(models.Model):
     id = models.AutoField(primary_key=True, unique=True, blank=False, null=False)
-    city = models.CharField(max_length=255, blank=False, null=False, default="Rzeszów")
+    city = models.CharField(max_length=255, blank=False, null=False, default="Vancouver")
     street = models.CharField(max_length=255, blank=False, null=False)
     number = models.CharField(max_length=5, blank=False, null=False)
     postcode = models.CharField(max_length=6, blank=False, null=False)
@@ -77,7 +77,7 @@ class Service(models.Model):
         verbose_name_plural = "Service"
 
     def __str__(self):
-        return f'{self.name}, price: {self.price} PLN'
+        return f'{self.name}, price: {self.price} Euro'
 
 class Record(models.Model):
     id = models.AutoField(primary_key=True, unique=True, blank=False, null=False)
