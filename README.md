@@ -10,8 +10,6 @@ Rejestr napraw telefonów komórkowych (do 28 czerwca)
 + aowak@cos.com / WlasneHaslo
 
 ## TODO
-+ rejestracja
-+ cennik
 + formularz nowej naprawy
 + strona klienta
 + update klienta

@@ -59,3 +59,10 @@ def pricing(request):
     services = Service.objects.all()
     return render(request, 'record/pricing.html', {'services': services})
 
+def user(request):
+    current_client = request.user
+
+    client = Client.objects.get(email=current_client.email)
+    records = Record.objects.filter(client=current_client.email)
+    return render(request, 'record/user.html', {'client':client, 'records':records})
+
