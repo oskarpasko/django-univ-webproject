@@ -1,3 +1,4 @@
 
 *.pyc
 *.pyc
+phone_service/db.sqlite3
