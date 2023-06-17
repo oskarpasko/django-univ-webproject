@@ -17,3 +17,11 @@ html,
 body {
     height: 100%;
 }
+
+.back-color{
+    background-color: #212121;
+}
+
+.btn{
+    background-color: rgb(65, 118, 144);
+}
