@@ -1,12 +1,24 @@
 from django.shortcuts import render, redirect
 from .models import *
-from .forms import LoginForm
+from .forms import LoginForm, RegisterForm
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 
 def register(request):
-    return render(request, 'record/register.html')
+    if request.method == 'GET':
+        form = RegisterForm()
+        return render(request, 'record/register.html', { 'form': form}) 
+    
+    if request.method == 'POST':
+        form = RegisterForm(request.POST) 
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.save()
+            login(request, user)
+            return redirect('index')
+        else:
+            return render(request, 'record/register.html', {'form': form})
 
 def index(request):
     clients = Client.objects.all()
