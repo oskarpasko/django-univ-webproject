@@ -3,8 +3,8 @@ from .models import *
 from .forms import LoginForm
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.decorators import login_required
 
-# Create your views here.
 def register(request):
     return render(request, 'record/register.html')
 
@@ -59,6 +59,7 @@ def pricing(request):
     services = Service.objects.all()
     return render(request, 'record/pricing.html', {'services': services})
 
+@login_required
 def user(request):
     current_client = request.user
 
