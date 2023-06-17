@@ -1,7 +1,13 @@
 
 /* My Account */
+.data-info{
+    color: #81d4fa;
+}
 .payments-item img.mr-3 {
     width: 47px;
+}
+.order-list{
+    background-color: #313131;
 }
 .order-list .btn {
     border-radius: 2px;
@@ -9,39 +15,15 @@
     font-size: 13px;
     padding: 7px 0 7px 0;
 }
-.osahan-account-page-left .nav-link {
-    padding: 18px 20px;
-    border: none;
-    font-weight: 600;
-    color: #535665;
-}
-.osahan-account-page-left .nav-link i {
-    width: 28px;
-    height: 28px;
-    background: #535665;
-    display: inline-block;
-    text-align: center;
-    line-height: 29px;
-    font-size: 15px;
-    border-radius: 50px;
-    margin: 0 7px 0 0px;
-    color: #fff;
-}
-.osahan-account-page-left .nav-link.active {
-    background: #f3f7f8;
-    color: #282c3f !important;
-}
-.osahan-account-page-left .nav-link.active i {
-    background: #282c3f !important;
-}
-.osahan-user-media img {
-    width: 90px;
+.account-page-left, .account-page-right{
+    background-color: #212121;
+    border-radius: 10px;
 }
 .card offer-card h5.card-title {
     border: 2px dotted #000;
 }
 .card.offer-card h5 {
-    border: 1px dotted #daceb7;
+    border: 1px dotted #fbfbfb;
     display: inline-table;
     color: #17a2b8;
     margin: 0 0 19px 0;
@@ -76,34 +58,9 @@
     position: absolute;
     top: 0;
 }
-.payments-item .media {
-    align-items: center;
-}
-.payments-item .media img {
-    margin: 0 40px 0 11px !important;
-}
-.reviews-members .media .mr-3 {
-    width: 56px;
-    height: 56px;
-    object-fit: cover;
-}
-.order-list img.mr-4 {
-    width: 70px;
-    height: 70px;
-    object-fit: cover;
-    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075)!important;
-    border-radius: 2px;
-}
-.osahan-cart-item p.text-gray.float-right {
-    margin: 3px 0 0 0;
-    font-size: 12px;
-}
-.osahan-cart-item .food-item {
-    vertical-align: bottom;
-}
 
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
-    color: #000000;
+    color: white;
 }
 
 .shadow-sm {

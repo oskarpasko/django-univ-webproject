@@ -14,11 +14,11 @@
 <div class="container mt-5 ">
     <div class="row">
         <div class="col-md-3">
-            <div class="osahan-account-page-left shadow-sm bg-white h-100">
+            <div class="account-page-left shadow-sm h-100">
                 <div class="border-bottom p-4">
-                    <div class="osahan-user text-center">
-                        <div class="osahan-user-media">
-                            <div class="osahan-user-media-body">
+                    <div class="user text-center">
+                        <div class="user-media">
+                            <div class="user-media-body">
                                 <h6 class="mb-2">{{ client.first_name }} {{ client.last_name }}</h6>
                                 <p class="mb-1">{{ client.phone }}</p>
                                 <p>{{client.email}}</p>
@@ -33,21 +33,19 @@
             </div>
         </div>
         <div class="col-md-9">
-            <div class="osahan-account-page-right shadow-sm bg-white p-4 h-100">
+            <div class="account-page-right shadow-sm p-4 h-100">
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane  fade  active show" id="orders" role="tabpanel" aria-labelledby="orders-tab">
                         <h4 class="font-weight-bold mt-0 mb-4">Past Orders</h4>
                                 {% for record in records %}
-                                    <div class="bg-white card mb-4 order-list shadow-sm">
+                                    <div class=" card mb-4 order-list shadow-sm">
                                         <div class="gold-members p-4">
                                             <div class="media">
                                                 <div class="media-body">
-                                                    <a href="#">
-                                                        <span class="float-right text-info fs-3">{{ record.service.name }}<i class="icofont-check-circled text-success"></i></span>
-                                                    </a>
-                                                    <p class="text-gray mt-3 mb-1"><i class="icofont-list"></i><span class="fw-bold"> Order Number:</span> #{{ record.id }} <i class="icofont-clock-time ml-2"></i></p>
-                                                    <p class="text-gray mb-1"><i class="icofont-location-arrow"></i><span class="fw-bold">Location:</span> {{ record.location}}</p>
-                                                    <p class="text-dark mb-1"><span class="fw-bold">Repair time:</span> {{ record.start_date }} - {{ record.deadline }}</p>
+                                                    <span class="float-right text-info fs-3">{{ record.service.name }}<i class="icofont-check-circled text-success"></i></span>
+                                                    <p class="text-gray mt-3 mb-1"><i class="icofont-list"></i><span class="fw-bold"> Order Number:</span> <span class="data-info">#{{ record.id }}</span><i class="icofont-clock-time ml-2"></i></p>
+                                                    <p class="text-gray mb-1"><i class="icofont-location-arrow"></i><span class="fw-bold">Location:</span> <span class="data-info">{{ record.location}}</span></p>
+                                                    <p class="text-dark mb-1"><span class="fw-bold">Repair time:</span> <span class="data-info">{{ record.start_date }} - {{ record.deadline }}</span></p>
                                                     <p class="text-dark"><span class="fw-bold">Status:</span>
                                                         {% if record.status %}
                                                             <span class="text-success">Repair has done!</span>
@@ -55,7 +53,7 @@
                                                             <span class="text-danger">On Going!</span>
                                                         {% endif %}
                                                     </p>
-                                                    <p class="mb-0 text-black text-primary pt-2 fs-5"><span class="text-black font-weight-bold"><span class="fw-bold">Total Paid:</span></span> {{ record.price }}&dollar;</p>
+                                                    <p class="mb-0 text-black text-primary pt-2 fs-5"><span class="text-black font-weight-bold"><span class="fw-bold">Total Paid: </span></span><span class="data-info">{{ record.price }}&dollar;</span></p>
                                                     <hr>
                                                     <div class="float-right">
                                                         <a class="btn btn-sm btn-primary" href="#"><i class="icofont-refresh"></i> DETAILS</a>
