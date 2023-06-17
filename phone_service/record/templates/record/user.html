@@ -4,7 +4,6 @@
 
 {% block css_styles %}
 <link rel="stylesheet" href="{% static 'record/user_styles.css' %}">
-<link rel="stylesheet" href="https://allyoucan.cloud/cdn/icofont/1.0.1/icofont.css" integrity="sha384-jbCTJB16Q17718YM9U22iJkhuGbS0Gd2LjaWb4YJEZToOPmnKDjySVa323U+W7Fv" crossorigin="anonymous">
 {% endblock css_styles %}
 
 {% block title %}User{% endblock title %}
@@ -12,7 +11,7 @@
 {% block content %}
 
 {% include 'record/includes/header.html' %}
-<div class="container">
+<div class="container mt-5 ">
     <div class="row">
         <div class="col-md-3">
             <div class="osahan-account-page-left shadow-sm bg-white h-100">
@@ -38,35 +37,34 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane  fade  active show" id="orders" role="tabpanel" aria-labelledby="orders-tab">
                         <h4 class="font-weight-bold mt-0 mb-4">Past Orders</h4>
-                        
                                 {% for record in records %}
                                     <div class="bg-white card mb-4 order-list shadow-sm">
                                         <div class="gold-members p-4">
-                                            <a href="#">
-                                            </a>
-                                        <div class="media">
-                                            <a href="#">
-                                            </a>
-                                            <div class="media-body">
-                                                <a href="#">
-                                                    <span class="float-right text-info">{{ record.service.name }}<i class="icofont-check-circled text-success"></i></span>
-                                                </a>
-                                                <p class="text-gray mb-1"><i class="icofont-location-arrow"></i>{{ record.location}}</p>
-                                                <p class="text-gray mb-3"><i class="icofont-list"></i> {{ record.id }} <i class="icofont-clock-time ml-2"></i></p>
-                                                <p class="text-dark">{{ record.start_date }} - {{ record.deadline }}</p>
-                                                <hr>
-                                                <div class="float-right">
-                                                    <a class="btn btn-sm btn-primary" href="#"><i class="icofont-refresh"></i> DETAILS</a>
+                                            <div class="media">
+                                                <div class="media-body">
+                                                    <a href="#">
+                                                        <span class="float-right text-info fs-3">{{ record.service.name }}<i class="icofont-check-circled text-success"></i></span>
+                                                    </a>
+                                                    <p class="text-gray mt-3 mb-1"><i class="icofont-list"></i><span class="fw-bold"> Order Number:</span> #{{ record.id }} <i class="icofont-clock-time ml-2"></i></p>
+                                                    <p class="text-gray mb-1"><i class="icofont-location-arrow"></i><span class="fw-bold">Location:</span> {{ record.location}}</p>
+                                                    <p class="text-dark mb-1"><span class="fw-bold">Repair time:</span> {{ record.start_date }} - {{ record.deadline }}</p>
+                                                    <p class="text-dark"><span class="fw-bold">Status:</span>
+                                                        {% if record.status %}
+                                                            <span class="text-success">Repair has done!</span>
+                                                        {% else %}
+                                                            <span class="text-danger">On Going!</span>
+                                                        {% endif %}
+                                                    </p>
+                                                    <p class="mb-0 text-black text-primary pt-2 fs-5"><span class="text-black font-weight-bold"><span class="fw-bold">Total Paid:</span></span> {{ record.price }}&dollar;</p>
+                                                    <hr>
+                                                    <div class="float-right">
+                                                        <a class="btn btn-sm btn-primary" href="#"><i class="icofont-refresh"></i> DETAILS</a>
+                                                    </div>
                                                 </div>
-                                                <p class="mb-0 text-black text-primary pt-2"><span class="text-black font-weight-bold"> Total Paid:</span> {{ record.price }}
-                                                </p>
                                             </div>
                                         </div>
-                                        </div>
                                     </div>
-                                {% endfor %}
-
-                            
+                                {% endfor %}     
                     </div>
                 </div>
             </div>

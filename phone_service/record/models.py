@@ -4,6 +4,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
+from datetime import date
 
 from .managers import CustomUserManager
 
@@ -93,3 +94,7 @@ class Record(models.Model):
 
     def __str__(self):
         return f'start date: {self.start_date}, deadline: {self.deadline} | {self.client} | {self.service} | {self.location}'
+    
+    @property
+    def status(self):
+        return date.today() > self.deadline
