@@ -113,6 +113,9 @@
 .rounded-pill {
     border-radius: 50rem!important;
 }
+a{
+    text-decoration: none;
+}
 a:hover{
     text-decoration:none;
 }
