@@ -30,6 +30,34 @@
                         </div>
                     </div>
                 </div>
+                <div class="user text-center mt-5">
+                    <div class="user-media">
+                        <div class="user-media-body">
+                            <h6 class="mb-2">Your Discount:</h6>
+                            {% if discount.price__sum < 1000 %}
+                                <h6 class="mb-2">0%</h6>
+                            {% elif discount.price__sum >= 1000 and  discount.price__sum < 2000%}
+                                <h6 class="mb-2">-10%</h6>
+                            {% elif discount.price__sum >= 2000 and discount.price__sum < 3000 %}
+                                <h6 class="mb-2">-20%</h6>
+                            {% elif discount.price__sum >= 3000 and discount.price__sum < 4000 %}
+                                <h6 class="mb-2">-30%</h6>
+                            {% elif discount.price__sum >= 4000 %}
+                                <h6 class="mb-2">-40%</h6>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="user text-center mt-5">
+                    <div class="user-media">
+                        <div class="user-media-body">
+                            <h6 class="mb-2">Next Discount:</h6>
+                            {% if to_discount != False %}
+                                <h6 class="mb-2">{{to_discount}} &dollar;</h6>
+                            {% endif%}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-md-9">

@@ -4,6 +4,7 @@ from .forms import LoginForm, RegisterForm
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
+from django.db.models import Sum
 
 def register(request):
     if request.method == 'GET':
@@ -77,5 +78,16 @@ def user(request):
 
     client = Client.objects.get(email=current_client.email)
     records = Record.objects.filter(client=current_client.email).order_by('-start_date')
-    return render(request, 'record/user.html', {'client':client, 'records':records})
+    discount = Record.objects.filter(client=current_client.email).aggregate(Sum('price'))
+    if discount['price__sum'] < 1000:
+        to_discount = Decimal(1000) - discount['price__sum']
+    elif discount['price__sum'] >= Decimal(1000) and discount['price__sum'] < Decimal(2000):
+        to_discount = Decimal(2000) - discount['price__sum']
+    elif discount['price__sum'] >= Decimal(2000) and discount['price__sum'] < Decimal(3000):
+        to_discount = Decimal(3000) - discount['price__sum']
+    elif discount['price__sum'] >= Decimal(3000) and discount['price__sum'] < Decimal(4000):
+        to_discount = Decimal(4000) - discount['price__sum']
+    else:
+        to_discount = False
+    return render(request, 'record/user.html', {'client':client, 'records':records, 'discount':discount, 'to_discount':to_discount})
 
