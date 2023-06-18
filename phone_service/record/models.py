@@ -101,4 +101,6 @@ class Record(models.Model):
     
     @property
     def status(self):
+        if self.deadline == None:
+            return False
         return date.today() > self.deadline
