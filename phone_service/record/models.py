@@ -5,6 +5,7 @@ from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from datetime import date
+from decimal import Decimal
 
 from .managers import CustomUserManager
 
@@ -76,6 +77,9 @@ class Service(models.Model):
 
     class Meta:
         verbose_name_plural = "Service"
+
+    def pln(self):
+        return round(self.price * Decimal(3.09), 2)
 
     def __str__(self):
         return f'{self.name}, price: {self.price} Euro'
