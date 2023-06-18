@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django import forms
-from .models import Client
+from .models import Client, Service, Record, Location
 
 class RegisterForm(UserChangeForm):
 
@@ -40,3 +40,14 @@ class LoginForm(forms.Form):
                             attrs={'class': "form-control"}))
     password = forms.CharField(min_length=6, max_length=65, widget=forms.PasswordInput(
                             attrs={'class':   "form-control"}))
+    
+class RecordForm(forms.ModelForm):
+    start_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
+    service = forms.IntegerField(widget=forms.Select(choices=Service.objects.all().values_list('id', 'name'), attrs={'class': 'form-select form-select-sm'}))
+    location = forms.IntegerField(widget=forms.Select(choices=Location.objects.all(), attrs={'class': 'form-select form-select-sm'}))
+
+    class Meta:
+        model = Record
+        fields = ['start_date', 'service', 'location']
+
+

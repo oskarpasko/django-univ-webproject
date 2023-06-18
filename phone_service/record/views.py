@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import *
-from .forms import LoginForm, RegisterForm
+from .forms import LoginForm, RegisterForm, RecordForm
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
@@ -93,5 +93,6 @@ def user(request):
 
 @login_required
 def new_record(request):
-    return render(request, 'record/new_record.html')
+    form = RecordForm()
+    return render(request, 'record/new_record.html', {'form':form})
 
