@@ -91,3 +91,7 @@ def user(request):
         to_discount = False
     return render(request, 'record/user.html', {'client':client, 'records':records, 'discount':discount, 'to_discount':to_discount})
 
+@login_required
+def new_record(request):
+    return render(request, 'record/new_record.html')
+
