@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import *
-from .forms import LoginForm, RegisterForm, RecordForm
+from .forms import LoginForm, RegisterForm, RecordForm, UpdateForm
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
@@ -104,3 +104,10 @@ def new_record(request):
         record.save()
         return redirect('index')
 
+@login_required
+def update(request):
+    form = UpdateForm()
+    current_client = request.user
+
+    client = Client.objects.get(email=current_client.email)
+    return render(request, 'record/update.html', {'client':client, 'form':form})
