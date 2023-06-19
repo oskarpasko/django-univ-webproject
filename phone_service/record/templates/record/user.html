@@ -22,7 +22,7 @@
                                 <h6 class="mb-2">{{ client.first_name }} {{ client.last_name }}</h6>
                                 <p class="mb-1">{{ client.phone }}</p>
                                 <p>{{client.email}}</p>
-                                <p class="mb-0 text-black font-weight-bold"><a class="text-primary mr-3" data-toggle="modal" data-target="#edit-profile-modal" href="#"><i class="icofont-ui-edit"></i> Edit Profile</a></p>
+                                <p class="mb-0 text-black font-weight-bold"><a class="text-primary mr-3" data-toggle="modal" data-target="#edit-profile-modal" href="{% url 'update' %}"><i class="icofont-ui-edit"></i> Edit Profile</a></p>
                                 {% if client.is_superuser %}
                                 <p class="mb-0 text-black font-weight-bold"><a class="text-primary mr-3" data-toggle="modal" data-target="#edit-profile-modal" href="#"><i class="icofont-ui-edit"></i> Admin Panel</a></p>
                                 {% endif %}
