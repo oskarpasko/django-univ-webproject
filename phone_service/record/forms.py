@@ -42,9 +42,17 @@ class LoginForm(forms.Form):
                             attrs={'class':   "form-control"}))
     
 class RecordForm(forms.ModelForm):
-    start_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
-    service = forms.IntegerField(widget=forms.Select(choices=Service.objects.all().values_list('id', 'name'), attrs={'class': 'form-select form-select-sm'}))
-    location = forms.IntegerField(widget=forms.Select(choices=Location.objects.all(), attrs={'class': 'form-select form-select-sm'}))
+    start_date = forms.DateField(
+            widget=forms.DateInput(
+                attrs={'type': 'date'}))
+    service = forms.IntegerField(
+            widget=forms.Select(
+                choices=Service.objects.all().values_list('id', 'name'), 
+                attrs={'class': 'form-select form-select-sm'}))
+    locations = forms.ModelChoiceField(
+            queryset=Location.objects.all(), 
+            widget=forms.Select(
+                attrs={'class': 'form-select form-select-sm'}))
 
     class Meta:
         model = Record
