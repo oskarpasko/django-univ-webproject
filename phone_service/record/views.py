@@ -93,6 +93,14 @@ def user(request):
 
 @login_required
 def new_record(request):
-    form = RecordForm()
-    return render(request, 'record/new_record.html', {'form':form})
+    if request.method == 'GET':
+            form = RecordForm()
+            return render(request, 'record/new_record.html', { 'form': form}) 
+    
+    if request.method == 'POST':
+        current_client = request.user
+        form = RecordForm(request.POST) 
+        record = Record.objects.create(start_date = request.POST.get('start_date'), deadline = None, price = Decimal(100), client = current_client.email, service = request.POST.get('service'), location = request.POST.get('locations'))
+        record.save()
+        return redirect('index')
 
