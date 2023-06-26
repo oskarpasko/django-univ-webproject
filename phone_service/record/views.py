@@ -98,9 +98,12 @@ def new_record(request):
             return render(request, 'record/new_record.html', { 'form': form}) 
     
     if request.method == 'POST':
+        form = RecordForm(request.POST)
         current_client = request.user
-        form = RecordForm(request.POST) 
-        record = Record.objects.create(start_date = request.POST.get('start_date'), deadline = None, price = Decimal(100), client = current_client.email, service = request.POST.get('service'), location = request.POST.get('locations'))
+        client = Client.objects.get(email=current_client.email)
+        service = Service.objects.get(id = request.POST.get('service'))
+        location = Location.objects.get(id = request.POST.get('locations'))
+        record = Record.objects.create(start_date = request.POST.get('start_date'), deadline = None, price = Decimal(100), client = client, service = service, location = location)
         record.save()
         return redirect('index')
 
