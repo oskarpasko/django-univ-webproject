@@ -91,18 +91,38 @@ def new_record(request):
         client = Client.objects.get(email=current_client.email)
         service = Service.objects.get(id = request.POST.get('service'))
         location = Location.objects.get(id = request.POST.get('locations'))
+        country = Location.objects.values('country').get(id = request.POST.get('locations'))
 
-        price = Service.objects.values('price').get(id = request.POST.get('service'))
         discount = Record.objects.filter(client=current_client.email).aggregate(Sum('price'))
 
-        if discount['price__sum'] >= Decimal(1000) and discount['price__sum'] < Decimal(2000):
-            price = Decimal(price['price']) * Decimal(0.9)
-        elif discount['price__sum'] >= Decimal(2000) and discount['price__sum'] < Decimal(3000):
-            price = Decimal(price['price']) * Decimal(0.8)
-        elif discount['price__sum'] >= Decimal(3000) and discount['price__sum'] < Decimal(4000):
-            price = Decimal(price['price']) * Decimal(0.7)
-        elif discount['price__sum'] > Decimal(4000):
-            price = Decimal(price['price']) * Decimal(0.6)
+        if country['country'] == 'Poland':
+            price = Service.objects.values('price').get(id = request.POST.get('service'))
+
+            if discount['price__sum'] >= Decimal(1000) and discount['price__sum'] < Decimal(2000):
+                price = (Decimal(price['price']) * Decimal(3.09)) * Decimal(0.9)
+            elif discount['price__sum'] >= Decimal(2000) and discount['price__sum'] < Decimal(3000):
+                price = (Decimal(price['price']) * Decimal(3.09)) * Decimal(0.8)
+            elif discount['price__sum'] >= Decimal(3000) and discount['price__sum'] < Decimal(4000):
+                price = (Decimal(price['price']) * Decimal(3.09)) * Decimal(0.7)
+            elif discount['price__sum'] > Decimal(4000):
+                price = (Decimal(price['price']) * Decimal(3.09)) * Decimal(0.6)
+            else:
+                price = Decimal(price['price'])
+
+        else:
+            price = Service.objects.values('price').get(id = request.POST.get('service'))
+
+            if discount['price__sum'] >= Decimal(1000) and discount['price__sum'] < Decimal(2000):
+                price = Decimal(price['price']) * Decimal(0.9)
+            elif discount['price__sum'] >= Decimal(2000) and discount['price__sum'] < Decimal(3000):
+                price = Decimal(price['price']) * Decimal(0.8)
+            elif discount['price__sum'] >= Decimal(3000) and discount['price__sum'] < Decimal(4000):
+                price = Decimal(price['price']) * Decimal(0.7)
+            elif discount['price__sum'] > Decimal(4000):
+                price = Decimal(price['price']) * Decimal(0.6)
+            else:
+                price = Decimal(price['price'])
+
 
         record = Record.objects.create(start_date = request.POST.get('start_date'), deadline = None, price = price, client = client, service = service, location = location)
         record.save()

@@ -55,7 +55,7 @@ class Location(models.Model):
         verbose_name_plural = "Location"
 
     def __str__(self):
-        return f'{self.postcode}, {self.street} {self.number}'
+        return f'{self.postcode}, {self.street} {self.number}, {self.country}'
 
 class Employee(models.Model):
     email = models.CharField(max_length=100, primary_key=True, blank=False, null=False)
