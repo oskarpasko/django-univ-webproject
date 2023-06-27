@@ -81,7 +81,15 @@
                                                             <span class="text-danger">On Going!</span>
                                                         {% endif %}
                                                     </p>
-                                                    <p class="mb-0 text-black text-primary pt-2 fs-5"><span class="text-black font-weight-bold"><span class="fw-bold">Total Paid: </span></span><span class="data-info">{{ record.price }}&dollar;</span></p>
+                                                    <p class="mb-0 text-black text-primary pt-2 fs-5"><span class="text-black font-weight-bold"><span class="fw-bold">Total Paid: </span></span><span class="data-info">{{ record.price }}
+                                                        
+                                                        {% if record.location.country == "Poland" %}
+                                                            PLN
+                                                        {% else %}
+                                                            &dollar;
+                                                         {% endif %}   
+                                                    
+                                                    </span></p>
                                                     <hr>
                                                     <div class="float-right">
                                                         <a class="btn btn-sm btn-primary" href="#"><i class="icofont-refresh"></i> DETAILS</a>
