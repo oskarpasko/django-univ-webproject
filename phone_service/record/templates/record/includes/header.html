@@ -1,3 +1,9 @@
+{% load i18n %}
+
+{% get_current_language as CURRENT_LANGUAGE %}
+{% get_available_languages as AVAILABLE_LANGUAGES %}
+{% get_language_info_list for AVAILABLE_LANGUAGES as languages %}
+
 <nav class="site-header sticky-top py-1">
     <div class="container d-flex flex-column flex-md-row justify-content-between">
       <a class="py-2 d-none d-md-inline-block text-decoration-none" href="{% url 'index' %}">Home</a>
@@ -9,5 +15,14 @@
       {% else %}
         <a class="py-2 d-none d-md-inline-block text-decoration-none" href="{% url 'login' %}">Login</a>
       {% endif %}
+      <span class="position-absolute top-50 end-0 translate-middle-y">
+      {% for language in languages %}
+        <a class="py-2 d-none d-md-inline-block text-decoration-none lan"
+           href="/{{ language.code }}/record"
+          {% if language.code == CURRENT_LANGUAGE %} class="active"{% endif %}>
+          {{ language.name_local|title }}
+        </a>
+      {% endfor %}
+      </span>
     </div>
  </nav>
