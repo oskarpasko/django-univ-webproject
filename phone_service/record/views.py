@@ -132,6 +132,16 @@ def new_record(request):
 def update(request):
     form = UpdateForm()
     current_client = request.user
-
     client = Client.objects.get(email=current_client.email)
-    return render(request, 'record/update.html', {'client':client, 'form':form})
+
+    if request.method == 'POST':
+        form = UpdateForm(request.POST,instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('user')
+    else:
+        form = UpdateForm()
+            
+        return render(request, 'record/update.html', {'client':client, 'form':form})
+
+    
