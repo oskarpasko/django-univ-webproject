@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="{% static 'record/main_page_styles.css' %}">
 {% endblock css_styles %}
 
-{% block title %}Main Page{% endblock title %}
+{% block title %}{% trans "Main Page" %}{% endblock title %}
 
 {% block content %}
 
@@ -19,9 +19,9 @@
     <div class="position-relative overflow-hidden p-md-5 mb-3 text-center">
         <div class="col-md-5 p-lg-5 mx-auto my-5">
           <h1 class="display-4 font-weight-normal">{% trans "Phone Service" %}</h1>
-          <p class="lead font-weight-normal">We will repair and take care of your phone when it needs it.</p>
+          <p class="lead font-weight-normal">{% trans "We will repair and take care of your phone when it needs it." %}</p>
           {% if not user.is_authenticated %}
-          <a class="btn btn-outline-secondary" href="{% url 'register' %}">Register Now!</a>
+          <a class="btn btn-outline-secondary" href="{% url 'register' %}">{% trans "Register Now!" %}</a>
           {% endif %}
         </div>
         <div class="product-device box-shadow d-none d-md-block"></div>
@@ -41,8 +41,8 @@
 
       <div class="row featurette">
         <div class="col-md-7">
-          <h2 class="featurette-heading">Smartphone Battery Replacement</h2>
-          <p class="lead">We specialize in providing top-quality smartphone battery replacement services. Is your phone's battery draining quickly or not holding a charge? Our expert technicians can swiftly replace your smartphone's battery with a brand new one, ensuring optimal performance and extended battery life. </p>
+          <h2 class="featurette-heading">{% trans "Smartphone Battery Replacement" %}</h2>
+          <p class="lead">{% trans "We specialize in providing top-quality smartphone battery replacement services. Is your phone's battery draining quickly or not holding a charge? Our expert technicians can swiftly replace your smartphone's battery with a brand new one, ensuring optimal performance and extended battery life." %}</p>
         </div>
         <div class="col-md-5">
           <img class="featurette-image img-fluid mx-auto" src="{%static 'record/img/battery.jpg'%}" alt="Generic placeholder image">
@@ -53,8 +53,8 @@
 
       <div class="row featurette">  
         <div class="col-md-7 order-md-2">
-          <h2 class="featurette-heading">Broken Screen Replacement</h2>
-          <p class="lead">Cracked or shattered screens are no match for us. Our skilled technicians are proficient in replacing broken screens, restoring your smartphone's visual appeal and functionality. </p>
+          <h2 class="featurette-heading">{% trans "Broken Screen Replacement" %}</h2>
+          <p class="lead">{% trans "Cracked or shattered screens are no match for us. Our skilled technicians are proficient in replacing broken screens, restoring your smartphone's visual appeal and functionality. " %}</p>
         </div>
         <div class="col-md-5 order-md-1">
           <img class="featurette-image img-fluid mx-auto" src="{%static 'record/img/broken.jpg'%}" alt="Generic placeholder image">
@@ -65,8 +65,8 @@
 
       <div class="row featurette">
         <div class="col-md-7">
-          <h2 class="featurette-heading">Lost Data Recovery</h2>
-          <p class="lead">Accidentally deleted important files or experiencing data loss on your smartphone? Don't panic! We are here to help you recover your lost data. Our knowledgeable team utilizes advanced techniques and cutting-edge tools to retrieve your valuable photos, videos, contacts, and other files. </p>
+          <h2 class="featurette-heading">{% trans "Lost Data Recovery" %}</h2>
+          <p class="lead">{% trans "Accidentally deleted important files or experiencing data loss on your smartphone? Don't panic! We are here to help you recover your lost data. Our knowledgeable team utilizes advanced techniques and cutting-edge tools to retrieve your valuable photos, videos, contacts, and other files." %} </p>
         </div>
         <div class="col-md-5">
           <img class="featurette-image img-fluid mx-auto" src="{%static 'record/img/data.jpg'%}" alt="Generic placeholder image">

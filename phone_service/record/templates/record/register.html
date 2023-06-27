@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
 
+{% load i18n %}
+
 {%load static %}
 
 {% block css_styles %}
 <link rel="stylesheet" href="{% static 'record/register_styles.css' %}">
 {% endblock css_styles %}
 
-{% block title %}Register{% endblock title %}
+{% block title %}{% trans "Register" %}{% endblock title %}
 
 {% block content %}
 
@@ -16,7 +18,7 @@
     <div class="register_container">
         <div class="signup-content">
             <div class="signup-form">
-                <h2 class="form-title">Sign up</h2>
+                <h2 class="form-title">{% trans "Sign up" %}</h2>
                 <form method="POST" class="register-form" id="register-form">
                     {% csrf_token %}
                     <div class="form-group">
@@ -38,7 +40,7 @@
                         {{ form.password2 }}
                     </div>
                     <div class="form-group form-button" style="text-align: center">
-                        <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
+                        <input type="submit" name="signup" id="signup" class="form-submit" value="{% trans "Register" %}"/>
                     </div>
                 </form>
             </div>

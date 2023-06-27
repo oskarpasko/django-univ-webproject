@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load i18n %}
+
 {%load static %}
 
 {% block css_styles %}
@@ -7,7 +9,7 @@
 
 {% endblock css_styles %}
 
-{% block title %}Login Page{% endblock title %}
+{% block title %}{% trans "Login Page" %}{% endblock title %}
 
 {% block content %}
 <form method="POST" novalidate>
@@ -29,17 +31,17 @@
 				  <!-- Email input -->
 				  <div class="form-outline mb-4">
 					{{form.email}}
-					<label class="form-label" for="form2Example1">Email address</label>
+					<label class="form-label" for="form2Example1">{% trans "Email address" %}</label>
 				  </div>
 	  
 				  <!-- Password input -->
 				  <div class="form-outline mb-4">
 					{{form.password}}
-					<label class="form-label" for="form2Example2">Password</label>
+					<label class="form-label" for="form2Example2">{% trans "Password" %}</label>
 				  </div>
 	  
 				  <!-- Submit button -->
-				  <button type="submit" class="btn btn-block mb-4">Sign in</button>
+				  <button type="submit" class="btn btn-block mb-4">{% trans "Sign in" %}</button>
 	  
 				</form>
 	  
