@@ -28,9 +28,16 @@ class UpdateForm(UserChangeForm):
         model=Client
         fields = ['first_name', 'last_name', 'phone','email']
 
+    def __init__(self, *args, **kwargs):
+        user_id = kwargs.pop('user_id', None)
+        super(UpdateForm, self).__init__(*args, **kwargs)
+        if user_id is not None:
+            # update queryset for exercise field
+            self.fields['email'].queryset = Client.objects.get(email=self.request.user.email)
+
     email = forms.CharField(min_length=6, max_length=65, required=True, widget=forms.TextInput(
                             attrs={'placeholder': 'Your Email',
-                                    'type': 'email'}))
+                                    'type': 'email',}))
     first_name = forms.CharField(min_length=1, max_length=50, required=True, widget=forms.TextInput(
                             attrs={'placeholder': 'Your First Name'}))
     last_name = forms.CharField(min_length=1,max_length=50, required=True, widget=forms.TextInput(
