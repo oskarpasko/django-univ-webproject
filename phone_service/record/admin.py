@@ -42,10 +42,10 @@ class EmployeeAdmin(admin.ModelAdmin):
     get_posn.short_description = 'position' 
 
 class LocationAdmin(admin.ModelAdmin):
-    list_filter = ["city"]
-    list_display = ["city", "street", "number", "postcode", "phone"]
-    search_fields = ["city", "street", "number", "postcode", "phone"]
-    ordering = ["city", "street", "number"]
+    list_filter = ["country", "city"]
+    list_display = ["country", "city", "street", "number", "postcode", "phone"]
+    search_fields = ["country", "city", "street", "number", "postcode", "phone"]
+    ordering = ["country", "city", "street", "number"]
 
 class PosnAdmin(admin.ModelAdmin):
     list_display = ["name", "salary"]

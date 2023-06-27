@@ -44,6 +44,7 @@ class Posn(models.Model):
     
 class Location(models.Model):
     id = models.AutoField(primary_key=True, unique=True, blank=False, null=False)
+    country = models.CharField(max_length=255, blank=False, null=False, default="Canada")
     city = models.CharField(max_length=255, blank=False, null=False, default="Vancouver")
     street = models.CharField(max_length=255, blank=False, null=False)
     number = models.CharField(max_length=5, blank=False, null=False)
