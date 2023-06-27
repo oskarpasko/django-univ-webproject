@@ -8,17 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-27 19:12+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2023-06-27 19:06+0000\n"
+"PO-Revision-Date: 2023-06-27 19:19+0000\n"
+"Last-Translator: Oskar Pasko <oskarpasko@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && "
-"(n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && "
-"n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"X-Translated-Using: django-rosetta 0.9.9\n"
 
 #: phone_service/settings.py:119
 msgid "English"
@@ -28,22 +27,214 @@ msgstr "Angielski"
 msgid "Polish"
 msgstr "Polski"
 
+#: phone_service/urls.py:22
+msgid "admin/"
+msgstr "admin/"
+
 #: record/managers.py:15
 msgid "The Email must be set"
 msgstr "Email musi być ustawiony"
 
 #: record/managers.py:31
 msgid "Superuser must have is_staff=True."
-msgstr ""
+msgstr "Superuser must have is_staff=True."
 
 #: record/managers.py:33
 msgid "Superuser must have is_superuser=True."
-msgstr ""
+msgstr "Superuser must have is_superuser=True."
 
 #: record/models.py:15
 msgid "email address"
 msgstr "Adres E-mail"
 
+#: record/templates/record/includes/header.html:9
+msgid "Home"
+msgstr "Strona Główna"
+
+#: record/templates/record/includes/header.html:10
+#: record/templates/record/pricing.html:12
+msgid "Pricing"
+msgstr "Cennik"
+
+#: record/templates/record/includes/header.html:12
+#: record/templates/record/new_record.html:21
+msgid "New Repair"
+msgstr "Nowa Naprawa"
+
+#: record/templates/record/includes/header.html:13
+msgid "Account"
+msgstr "Konto"
+
+#: record/templates/record/includes/header.html:14
+msgid "Logout"
+msgstr "Wyloguj"
+
+#: record/templates/record/includes/header.html:16
+msgid "Login"
+msgstr "Zaloguj"
+
+#: record/templates/record/index.html:11
+msgid "Main Page"
+msgstr "Strona Główna"
+
 #: record/templates/record/index.html:21
 msgid "Phone Service"
 msgstr "Serwis Telefonowy"
+
+#: record/templates/record/index.html:22
+msgid "We will repair and take care of your phone when it needs it."
+msgstr ""
+"Naprawimy i zaopiekujemy się Twoim telefonem wtedy, gdy tego potrzebuje."
+
+#: record/templates/record/index.html:24
+msgid "Register Now!"
+msgstr "Zarejestruj się!"
+
+#: record/templates/record/index.html:44
+msgid "Smartphone Battery Replacement"
+msgstr "Wymiana baterii w smartfonie"
+
+#: record/templates/record/index.html:45
+msgid ""
+"We specialize in providing top-quality smartphone battery replacement "
+"services. Is your phone's battery draining quickly or not holding a charge? "
+"Our expert technicians can swiftly replace your smartphone's battery with a "
+"brand new one, ensuring optimal performance and extended battery life."
+msgstr ""
+"Specjalizujemy się w świadczeniu najwyższej jakości usług wymiany baterii w "
+"smartfonach. Czy bateria Twojego telefonu szybko się rozładowuje lub nie "
+"utrzymuje ładunku? Nasi doświadczeni technicy mogą szybko wymienić baterię "
+"smartfona na zupełnie nową, zapewniając optymalną wydajność i dłuższą "
+"żywotność baterii."
+
+#: record/templates/record/index.html:56
+msgid "Broken Screen Replacement"
+msgstr "Wymiana uszkodzonego ekranu"
+
+#: record/templates/record/index.html:57
+msgid ""
+"Cracked or shattered screens are no match for us. Our skilled technicians "
+"are proficient in replacing broken screens, restoring your smartphone's "
+"visual appeal and functionality. "
+msgstr ""
+"Pęknięte lub stłuczone ekrany nie stanowią dla nas wyzwania. Nasi "
+"wykwalifikowani technicy są biegli w wymianie uszkodzonych ekranów, "
+"przywracając atrakcyjność wizualną i funkcjonalność smartfona."
+
+#: record/templates/record/index.html:68
+msgid "Lost Data Recovery"
+msgstr "Odzyskiwanie utraconych danych"
+
+#: record/templates/record/index.html:69
+msgid ""
+"Accidentally deleted important files or experiencing data loss on your "
+"smartphone? Don't panic! We are here to help you recover your lost data. Our"
+" knowledgeable team utilizes advanced techniques and cutting-edge tools to "
+"retrieve your valuable photos, videos, contacts, and other files."
+msgstr ""
+"Przypadkowo usunąłeś ważne pliki lub utraciłeś dane na swoim smartfonie? Nie"
+" panikować! Jesteśmy tutaj, aby pomóc Ci odzyskać utracone dane. Nasz "
+"kompetentny zespół wykorzystuje zaawansowane techniki i najnowocześniejsze "
+"narzędzia do odzyskiwania cennych zdjęć, filmów, kontaktów i innych plików."
+
+#: record/templates/record/login.html:12
+msgid "Login Page"
+msgstr "Zaloguj się"
+
+#: record/templates/record/login.html:34
+#| msgid "email address"
+msgid "Email address"
+msgstr "Adres E-mail"
+
+#: record/templates/record/login.html:40
+msgid "Password"
+msgstr "Hasło"
+
+#: record/templates/record/login.html:44
+msgid "Sign in"
+msgstr "Zaloguj"
+
+#: record/templates/record/new_record.html:11
+msgid "New Record"
+msgstr "Nowa Naprawa"
+
+#: record/templates/record/pricing.html:22
+msgid "Service's name"
+msgstr "Nazwa usługi"
+
+#: record/templates/record/pricing.html:23
+msgid "Dollars"
+msgstr "Dolary"
+
+#: record/templates/record/register.html:11
+#: record/templates/record/register.html:43
+msgid "Register"
+msgstr "Zarejestruj się"
+
+#: record/templates/record/register.html:21
+msgid "Sign up"
+msgstr "Rejestracja"
+
+#: record/templates/record/update.html:12
+msgid "Update Your Profile!"
+msgstr "Edycja Profilu"
+
+#: record/templates/record/update.html:28
+msgid "Profile"
+msgstr "Twój profil"
+
+#: record/templates/record/update.html:30 record/templates/record/user.html:29
+msgid "Admin Panel"
+msgstr "Panel Administratora"
+
+#: record/templates/record/update.html:52
+msgid "Update Your profile"
+msgstr "Edycja Profilu"
+
+#: record/templates/record/update.html:68
+msgid "Update"
+msgstr "Edycja"
+
+#: record/templates/record/user.html:11
+msgid "User"
+msgstr "Klient"
+
+#: record/templates/record/user.html:27
+msgid "Edit Profile"
+msgstr "Edytuj Profil"
+
+#: record/templates/record/user.html:38
+msgid "Your Discount:"
+msgstr "Twoja zniżka"
+
+#: record/templates/record/user.html:56
+msgid "Next Discount:"
+msgstr "Następna zniżka"
+
+#: record/templates/record/user.html:69
+msgid "Past Orders"
+msgstr "Twoje zamówienia"
+
+#: record/templates/record/user.html:76
+msgid "Order Number:"
+msgstr "Numer zamówienia:"
+
+#: record/templates/record/user.html:77
+msgid "Location:"
+msgstr "Lokalizacja:"
+
+#: record/templates/record/user.html:78
+msgid "Repair time:"
+msgstr "Czas naprawy:"
+
+#: record/templates/record/user.html:81
+msgid "Repair has done!"
+msgstr "Gotowe do odebrania!"
+
+#: record/templates/record/user.html:83
+msgid "On Going!"
+msgstr "Podczas naprawy!"
+
+#: record/templates/record/user.html:86
+msgid "Total Paid:"
+msgstr "Zapłacono: "

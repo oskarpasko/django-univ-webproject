@@ -6,14 +6,14 @@
 
 <nav class="site-header sticky-top py-1">
     <div class="container d-flex flex-column flex-md-row justify-content-between">
-      <a class="py-2 d-none d-md-inline-block text-decoration-none" href="{% url 'index' %}">Home</a>
-      <a class="py-2 d-none d-md-inline-block text-decoration-none" href="{% url 'pricing' %}">Pricing</a>
+      <a class="py-2 d-none d-md-inline-block text-decoration-none" href="{% url 'index' %}">{% trans "Home" %}</a>
+      <a class="py-2 d-none d-md-inline-block text-decoration-none" href="{% url 'pricing' %}">{% trans "Pricing" %}</a>
       {% if user.is_authenticated %}
-        <a class="py-2 d-none d-md-inline-block text-decoration-none" href="{% url 'new-record' %}">New Repair</a>
-        <a class="py-2 d-none d-md-inline-block text-decoration-none" href="{% url 'user' %}">Account</a>
-        <a class="py-2 d-none d-md-inline-block text-decoration-none" href="{% url 'logout' %}">Logout</a>
+        <a class="py-2 d-none d-md-inline-block text-decoration-none" href="{% url 'new-record' %}">{% trans "New Repair" %}</a>
+        <a class="py-2 d-none d-md-inline-block text-decoration-none" href="{% url 'user' %}">{% trans "Account" %}</a>
+        <a class="py-2 d-none d-md-inline-block text-decoration-none" href="{% url 'logout' %}">{% trans "Logout" %}</a>
       {% else %}
-        <a class="py-2 d-none d-md-inline-block text-decoration-none" href="{% url 'login' %}">Login</a>
+        <a class="py-2 d-none d-md-inline-block text-decoration-none" href="{% url 'login' %}">{% trans "Login" %}</a>
       {% endif %}
       <span class="position-absolute top-50 end-0 translate-middle-y">
       {% for language in languages %}

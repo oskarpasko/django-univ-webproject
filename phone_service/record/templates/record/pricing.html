@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load i18n %}
+
 {%load static %}
 
 {% block css_styles %}
@@ -7,7 +9,7 @@
 <link rel="stylesheet" href="{% static 'record/pricing.css' %}">
 {% endblock css_styles %}
 
-{% block title %}Pricing{% endblock title %}
+{% block title %}{% trans "Pricing" %}{% endblock title %}
 
 {% block content %}
 
@@ -17,8 +19,8 @@
         <thead>
             <tr>
               <th scope="col-6">ID</th>
-              <th scope="col-6">Service's name</th>
-              <th scope="col-6">Dollars</th>
+              <th scope="col-6">{% trans "Service's name" %}</th>
+              <th scope="col-6">{% trans "Dollars" %}</th>
               <th scope="col-6">PLN</th>
             </tr>
           </thead>
