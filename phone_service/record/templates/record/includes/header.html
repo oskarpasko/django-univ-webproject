@@ -4,8 +4,16 @@
 {% get_available_languages as AVAILABLE_LANGUAGES %}
 {% get_language_info_list for AVAILABLE_LANGUAGES as languages %}
 
+{% block css_styles %}
+<style>
+  .container {
+    max-width: 960px;
+  }  
+</style>
+{% endblock css_styles %}
+
 <nav class="site-header sticky-top py-1">
-    <div class="container d-flex flex-column flex-md-row justify-content-between">
+    <div class="container d-flex flex-column flex-md-row justify-content-around">
       <a class="py-2 d-none d-md-inline-block text-decoration-none" href="{% url 'index' %}">{% trans "Home" %}</a>
       <a class="py-2 d-none d-md-inline-block text-decoration-none" href="{% url 'pricing' %}">{% trans "Pricing" %}</a>
       {% if user.is_authenticated %}
@@ -15,14 +23,12 @@
       {% else %}
         <a class="py-2 d-none d-md-inline-block text-decoration-none" href="{% url 'login' %}">{% trans "Login" %}</a>
       {% endif %}
-      <span class="position-absolute top-50 end-0 translate-middle-y">
       {% for language in languages %}
-        <a class="py-2 d-none d-md-inline-block text-decoration-none lan"
+        <a class="py-2 d-none d-md-inline-block text-decoration-none lan align-self-md-end"
            href="/{{ language.code }}/record"
           {% if language.code == CURRENT_LANGUAGE %} class="active"{% endif %}>
           {{ language.name_local|title }}
         </a>
       {% endfor %}
-      </span>
     </div>
  </nav>
