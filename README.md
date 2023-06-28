@@ -31,7 +31,17 @@ python3 manage.py runserver
 python3 manage.py startapp <app-name>
 ```
 
+- install rosetta to django
+```
+pip install django-rosetta
+```
+
 - make messsegaes to translate
 ```
 django-admin makemessages --all --ignore=env
+```
+
+- install modeltranslation to django
+```
+pip install django-modeltranslation
 ```
