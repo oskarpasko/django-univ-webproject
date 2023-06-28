@@ -40,8 +40,3 @@ pip install django-rosetta
 ```
 django-admin makemessages --all --ignore=env
 ```
-
-- install modeltranslation to django
-```
-pip install django-modeltranslation
-```
