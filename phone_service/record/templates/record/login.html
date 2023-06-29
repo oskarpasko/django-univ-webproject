@@ -28,6 +28,7 @@
 			  <div class="card-body py-5 px-md-5">
 	  
 				<form method="POST">
+				{% csrf_token %}
 				  <!-- Email input -->
 				  <div class="form-outline mb-4">
 					{{form.email}}
