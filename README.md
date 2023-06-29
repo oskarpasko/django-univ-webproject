@@ -9,7 +9,34 @@ Rejestr napraw telefonów komórkowych (do 28 czerwca)
 + jkowalski@cos.com / SlabeHaslo
 + aowak@cos.com / WlasneHaslo
 
-## TODO
-+ formularz nowej naprawy
-+ strona klienta
-+ update klienta
+## Commands
+
+- check if django is installed
+```
+ django-admin
+```
+
+- create new project
+```
+ django-admin startproject <page-name>
+```
+
+- start own server
+```
+python3 manage.py runserver
+```
+
+- create new app
+```
+python3 manage.py startapp <app-name>
+```
+
+- install rosetta to django
+```
+pip install django-rosetta
+```
+
+- make messsegaes to translate
+```
+django-admin makemessages --all --ignore=env
+```
