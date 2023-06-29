@@ -67,7 +67,10 @@ def user(request):
     client = Client.objects.get(email=current_client.email)
     records = Record.objects.filter(client=current_client.email).order_by('-start_date')
     discount = Record.objects.filter(client=current_client.email).aggregate(Sum('price'))
-    if discount['price__sum'] < 1000:
+
+    if discount['price__sum'] == None:
+        to_discount = False
+    elif discount['price__sum'] < 1000:
         to_discount = round(Decimal(1000) - discount['price__sum'], 2)
     elif discount['price__sum'] >= Decimal(1000) and discount['price__sum'] < Decimal(2000):
         to_discount = round(Decimal(2000) - discount['price__sum'], 2)
