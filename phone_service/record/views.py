@@ -92,16 +92,26 @@ def new_record(request):
         form = RecordForm(request.POST)
         current_client = request.user
         client = Client.objects.get(email=current_client.email)
-        service = Service.objects.get(id = request.POST.get('service'))
-        location = Location.objects.get(id = request.POST.get('locations'))
+        try:
+            service = Service.objects.get(id = request.POST.get('service'))
+        except Service.DoesNotExist:
+            messages.info(request, 'Error! Invalid service!')
+            return render(request, 'record/new_record.html', { 'form': form}) 
+        try:
+            location = Location.objects.get(id = request.POST.get('locations'))
+        except Location.DoesNotExist:
+            messages.info(request, 'Error! Invalid location!')
+            return render(request, 'record/new_record.html', { 'form': form}) 
+        
         country = Location.objects.values('country').get(id = request.POST.get('locations'))
-
         discount = Record.objects.filter(client=current_client.email).aggregate(Sum('price'))
 
         if country['country'] == 'Poland':
             price = Service.objects.values('price').get(id = request.POST.get('service'))
 
-            if discount['price__sum'] >= Decimal(1000) and discount['price__sum'] < Decimal(2000):
+            if discount['price__sum'] == None:
+                price = price = Decimal(price['price'])
+            elif discount['price__sum'] >= Decimal(1000) and discount['price__sum'] < Decimal(2000):
                 price = (Decimal(price['price']) * Decimal(3.09)) * Decimal(0.9)
             elif discount['price__sum'] >= Decimal(2000) and discount['price__sum'] < Decimal(3000):
                 price = (Decimal(price['price']) * Decimal(3.09)) * Decimal(0.8)
@@ -115,6 +125,8 @@ def new_record(request):
         else:
             price = Service.objects.values('price').get(id = request.POST.get('service'))
 
+            if discount['price__sum'] == None:
+                price = price = Decimal(price['price'])
             if discount['price__sum'] >= Decimal(1000) and discount['price__sum'] < Decimal(2000):
                 price = Decimal(price['price']) * Decimal(0.9)
             elif discount['price__sum'] >= Decimal(2000) and discount['price__sum'] < Decimal(3000):
